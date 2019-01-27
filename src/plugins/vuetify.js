@@ -1,6 +1,6 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
-import 'vuetify/src/stylus/app.styl'
+import Vue from 'vue';
+import Vuetify from 'vuetify/lib';
+import 'vuetify/src/stylus/app.styl';
 
 Vue.use(Vuetify, {
   theme: {
@@ -13,5 +13,5 @@ Vue.use(Vuetify, {
     warning: '#FFC107'
   },
   customProperties: true,
-  iconfont: 'md',
-})
+  iconfont: 'md'
+});
