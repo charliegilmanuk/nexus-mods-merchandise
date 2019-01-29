@@ -83,6 +83,7 @@
         hide-details
         flat
         placeholder="Search..."
+        append-icon="search"
       ></v-text-field>
       <v-divider vertical></v-divider>
       <v-select
@@ -95,12 +96,10 @@
         multiple
         hide-actions
         hide-details
-        chips
         :menu-props="{ maxHeight: 350, offsetY: true }"
         class="shrink"
         clearable
       ></v-select>
-      <v-btn color="primary" depressed @click="outOfScope()">Search</v-btn>
     </v-toolbar>
   </div>
 </template>
@@ -171,7 +170,7 @@ export default {
       'Authors',
       'Games'
     ],
-    searchSelected: []
+    searchSelected: ['Mods']
   })
 };
 </script>
