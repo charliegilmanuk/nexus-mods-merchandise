@@ -64,7 +64,7 @@
                   align-content-center
                   justify-center
                   :class="[
-                    product.isExpired()
+                    product.expired
                       ? 'red--text'
                       : 'grey--text text--lighten-1',
                     'subtitle'
@@ -73,14 +73,14 @@
                   <v-icon small style="color: inherit;" class="mr-2"
                     >timer</v-icon
                   >
-                  <span>{{ product.formattedExpiry() }}</span>
+                  <span>{{ product.formattedExpiry }}</span>
                 </v-flex>
                 <v-flex>
                   <span>{{ product.orders }} / {{ product.goal }}</span>
                   <span class="grey--text"> backers</span>
                   <v-progress-linear
-                    :value="product.progress()"
-                    :color="product.status().color"
+                    :value="product.progress"
+                    :color="product.status.color"
                   ></v-progress-linear>
                 </v-flex>
               </v-layout>
