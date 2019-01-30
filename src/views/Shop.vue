@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-xl class="py-5">
+  <v-container grid-list-xl class="pa-5">
     <v-toolbar dense class="transparent pa-0" flat>
       <v-text-field
         v-model="search"
