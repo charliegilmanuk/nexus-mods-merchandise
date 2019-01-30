@@ -43,10 +43,14 @@
         class="mx-0"
       >
         <v-card flat>
-          <v-img :src="product.image" aspect-ratio="1.5">
+          <v-img
+            :src="product.image"
+            aspect-ratio="1.5"
+            gradient="to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5) 25%, transparent"
+          >
             <v-container fill-height fluid>
-              <v-layout>
-                <v-flex xs12 justify-end class="py-0">
+              <v-layout fill-height align-end>
+                <v-flex xs12 class="py-0">
                   <span class="headline">{{ product.name }}</span>
                 </v-flex>
               </v-layout>
