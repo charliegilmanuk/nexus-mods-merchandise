@@ -21,14 +21,12 @@ export default new Router({
     },
     {
       path: '/products',
-      redirect: { name: 'shop' },
-      children: [
-        {
-          name: 'product',
-          path: ':id',
-          component: require('~/views/SingleProduct').default
-        }
-      ]
+      redirect: { name: 'shop' }
+    },
+    {
+      name: 'product',
+      path: '/products/:id',
+      component: require('~/views/SingleProduct').default
     }
   ]
 });
