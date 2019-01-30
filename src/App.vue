@@ -3,7 +3,9 @@
     <header-component></header-component>
 
     <v-content>
-      <router-view />
+      <transition name="fade-transition">
+        <router-view />
+      </transition>
     </v-content>
 
     <footer-component></footer-component>
@@ -18,11 +20,6 @@ export default {
   components: {
     'header-component': Header,
     'footer-component': Footer
-  },
-  data() {
-    return {
-      //
-    };
   }
 };
 </script>
