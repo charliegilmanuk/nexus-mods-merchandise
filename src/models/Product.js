@@ -52,4 +52,9 @@ export default class Product {
   get formattedExpiry() {
     return moment(this.expiry).format('LLLL');
   }
+
+  // Relative time until/since expiry
+  get timeLeft() {
+    return moment(this.expiry).fromNow();
+  }
 }
