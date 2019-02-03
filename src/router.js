@@ -36,17 +36,19 @@ export default new Router({
     {
       name: 'admin.products',
       path: '/admin/products',
-      component: require('~/views/admin/Products').default
-    },
-    {
-      name: 'admin.products.create',
-      path: '/admin/products/create',
-      component: require('~/views/admin/Product').default
-    },
-    {
-      name: 'admin.products.edit',
-      path: '/admin/products/:id',
-      component: require('~/views/admin/Product').default
+      component: require('~/views/admin/Products').default,
+      children: [
+        {
+          name: 'admin.products.create',
+          path: 'create',
+          component: require('~/views/admin/Product').default
+        },
+        {
+          name: 'admin.products.edit',
+          path: ':id',
+          component: require('~/views/admin/Product').default
+        }
+      ]
     }
   ]
 });
