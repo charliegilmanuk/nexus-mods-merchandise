@@ -34,6 +34,13 @@
       </v-combobox>
     </v-toolbar>
     <v-layout wrap class="py-5">
+      <v-flex xs12 class="py-5 text-xs-center" v-if="loading">
+        <v-progress-circular
+          :size="64"
+          color="primary"
+          indeterminate
+        ></v-progress-circular>
+      </v-flex>
       <v-flex
         xs6
         md4
@@ -41,6 +48,7 @@
         v-for="product in products"
         :key="product.id"
         class="mx-0"
+        transition="slide-y-transition"
       >
         <v-card flat>
           <v-img
@@ -104,7 +112,7 @@
 </template>
 
 <script>
-import products from '~/data/products';
+import { mapState } from 'vuex';
 
 export default {
   data: () => ({
@@ -119,9 +127,10 @@ export default {
     sortingOn: null
   }),
   computed: {
-    products() {
-      return products;
-    }
+    ...mapState({
+      products: state => state.products.all,
+      loading: state => state.products.loading
+    })
   }
 };
 </script>
