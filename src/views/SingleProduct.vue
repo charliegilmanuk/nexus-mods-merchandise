@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import products from '~/data/products';
+import { mapState } from 'vuex';
 
 export default {
   data: () => ({
@@ -43,9 +43,9 @@ export default {
     tabs: ['Description', 'Comments', 'FAQ']
   }),
   computed: {
-    products() {
-      return products;
-    },
+    ...mapState({
+      products: state => state.products.all
+    }),
 
     productId() {
       return this.$route.params.id;
@@ -54,12 +54,6 @@ export default {
     product() {
       return this.products.find(x => x.id === this.productId);
     }
-  },
-  created() {
-    console.log('product mounted');
-
-    console.log('products', this.products);
-    console.log('productId', this.productId);
   }
 };
 </script>
