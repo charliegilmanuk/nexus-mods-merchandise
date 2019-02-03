@@ -27,6 +27,7 @@
           v-model="selectedRows"
           :headers="headers"
           :items="products"
+          :loading="loading"
           item-key="id"
           select-all
           class="elevation-1"
@@ -78,8 +79,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import pluralize from 'pluralize';
-import products from '~/data/products';
 
 export default {
   data: () => ({
@@ -96,9 +97,10 @@ export default {
     ]
   }),
   computed: {
-    products() {
-      return products;
-    }
+    ...mapState({
+      products: state => state.products.all,
+      loading: state => state.products.loading
+    })
   },
   methods: {
     pluralize: pluralize
