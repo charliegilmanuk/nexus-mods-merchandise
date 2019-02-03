@@ -109,6 +109,7 @@ export default {
   data: () => ({
     userNav: [{ text: 'Settings' }, { text: 'Sign out' }],
     mainNav: [
+      { text: 'Shop Admin', to: { name: 'admin' } },
       { text: 'Shop', to: { name: 'shop' } },
       { text: 'Forums' },
       { text: 'Chat' },
