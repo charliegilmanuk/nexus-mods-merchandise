@@ -51,19 +51,25 @@
         transition="slide-y-transition"
       >
         <v-card flat>
-          <v-img
-            :src="product.image"
-            aspect-ratio="1.5"
-            gradient="to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5) 25%, transparent"
+          <router-link
+            :to="{ name: 'product', params: { id: product.id } }"
+            style="text-decoration: none;"
+            class="white--text"
           >
-            <v-container fill-height fluid>
-              <v-layout fill-height align-end>
-                <v-flex xs12 class="py-0">
-                  <span class="headline">{{ product.name }}</span>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-img>
+            <v-img
+              :src="product.image"
+              aspect-ratio="1.5"
+              gradient="to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5) 25%, transparent"
+            >
+              <v-container fill-height fluid>
+                <v-layout fill-height align-end>
+                  <v-flex xs12 class="py-0">
+                    <span class="headline">{{ product.name }}</span>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-img>
+          </router-link>
           <v-card-title>
             <v-container class="pa-0">
               <v-layout column>
