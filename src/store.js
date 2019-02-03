@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import modules from './store';
+import modules from './store/index';
 
 Vue.use(Vuex);
 
