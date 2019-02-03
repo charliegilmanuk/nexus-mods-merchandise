@@ -15,11 +15,18 @@
 <script>
 import Header from '~/layout/Header';
 import Footer from '~/layout/Footer';
+import { mapActions } from 'vuex';
 
 export default {
   components: {
     'header-component': Header,
     'footer-component': Footer
+  },
+  created() {
+    this.getProducts();
+  },
+  methods: {
+    ...mapActions(['getProducts'])
   }
 };
 </script>
