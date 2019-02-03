@@ -15,11 +15,15 @@
             append-icon="search"
             placeholder="Search..."
           ></v-text-field>
-          <v-btn v-if="selectedRows.length" color="red">
+          <v-btn
+            v-if="selectedRows.length"
+            color="red"
+            @click="showDeleteConfirm = true"
+          >
             Remove {{ selectedRows.length > 1 ? selectedRows.length : '' }}
             {{ pluralize('Product', selectedRows.length) }}
           </v-btn>
-          <v-btn color="green">
+          <v-btn color="green" :to="{ name: 'admin.products.create' }">
             Add Product
           </v-btn>
         </v-toolbar>
@@ -66,26 +70,67 @@
               </span>
             </td>
             <td>{{ props.item.orders }} / {{ props.item.goal }}</td>
-            <td class="text-xs-right">
+            <td>
               <v-chip label :color="props.item.status.color">{{
                 props.item.status.text
               }}</v-chip>
+            </td>
+            <td class="text-xs-right">
+              <v-btn
+                icon
+                small
+                :to="{
+                  name: 'admin.products.edit',
+                  params: { id: props.item.id }
+                }"
+              >
+                <v-icon small>edit</v-icon>
+              </v-btn>
+              <v-btn icon small @click="confirmDeleteSingle(props.item)">
+                <v-icon small>delete</v-icon>
+              </v-btn>
             </td>
           </template>
         </v-data-table>
       </v-flex>
     </v-layout>
+
+    <v-dialog v-model="showDeleteConfirm" width="500">
+      <v-card>
+        <v-card-text class="pa-4">
+          <p class="ma-0">
+            Are you sure you want to remove
+            {{ pluralize('this', selectedRows.length) }}
+            {{ selectedRows.length }}
+            {{ pluralize('product', selectedRows.length) }}?
+          </p>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="grey" flat @click="showDeleteConfirm = false">
+            Cancel
+          </v-btn>
+          <v-btn color="red" flat @click="deleteSelected()">
+            Delete
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <router-view></router-view>
   </v-container>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import pluralize from 'pluralize';
 
 export default {
   data: () => ({
     search: '',
     selectedRows: [],
+    showDeleteConfirm: false,
     headers: [
       { text: 'Image', value: 'image', sortable: false, align: 'center' },
       { text: 'ID', value: 'id', sortable: true, align: 'center' },
@@ -93,7 +138,8 @@ export default {
       { text: 'Description', value: 'id', sortable: false },
       { text: 'Expiry', value: 'expiry', sortable: true },
       { text: 'Backers', value: 'orders', sortable: false },
-      { text: 'Status', value: 'status.text', sortable: true, align: 'right' }
+      { text: 'Status', value: 'status.text', sortable: true },
+      { text: 'Actions', value: 'actions', sortable: false, align: 'right' }
     ]
   }),
   computed: {
@@ -103,7 +149,21 @@ export default {
     })
   },
   methods: {
-    pluralize: pluralize
+    ...mapActions(['deleteProducts']),
+
+    pluralize: pluralize,
+
+    confirmDeleteSingle(product) {
+      this.selectedRows.push(product);
+      this.showDeleteConfirm = true;
+    },
+
+    deleteSelected() {
+      this.deleteProducts(this.selectedRows).then(() => {
+        this.selectedRows = [];
+        this.showDeleteConfirm = false;
+      });
+    }
   }
 };
 </script>
