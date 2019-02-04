@@ -50,7 +50,7 @@
         </v-menu>
         <v-divider vertical></v-divider>
         <!-- Mini cart -->
-        <v-menu offset-y left>
+        <v-menu offset-y left :close-on-content-click="false">
           <v-btn slot="activator">
             <v-badge right color="red">
               <span slot="badge" v-if="cartCount">{{ cartCount }}</span>
