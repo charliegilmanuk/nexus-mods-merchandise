@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-xl class="pa-5">
+  <v-container grid-list-xl class="pa-5" id="shop-container">
     <v-toolbar dense class="transparent pa-0" flat>
       <v-text-field
         v-model="search"
@@ -158,7 +158,11 @@ export default {
     ],
     sortingOn: null
   }),
-
+  watch: {
+    page() {
+      this.$vuetify.goTo('#shop-container');
+    }
+  },
   computed: {
     ...mapState({
       products: state => state.shop.products,
