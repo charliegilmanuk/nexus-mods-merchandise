@@ -41,7 +41,6 @@ const actions = {
 
   // Create new Product instance from args, commit to state and forage
   addProduct: ({ state, commit }, product) => {
-    console.log('addProduct called with: ', product);
     return new Promise(resolve => {
       product.id = state.all[state.all.length - 1].id + 1;
       product = new Product(...Object.values(product));
@@ -57,7 +56,6 @@ const actions = {
   // Reconstruct Product instance from args, match to state and update state and forage
   // Could be combined with addProduct but kept apart in case of future complexities
   updateProduct: ({ state, commit }, product) => {
-    console.log('updateProduct called with: ', product);
     return new Promise(resolve => {
       product = new Product(...Object.values(product));
 
@@ -96,8 +94,6 @@ const mutations = {
   // Set an individual product, either new or updated
   setProduct: (state, payload) => {
     let i = state.all.findIndex(product => product.id === payload.id);
-
-    console.log('setProduct called, index to replace: ', i);
 
     if (i >= 0) {
       Vue.set(state.all, i, payload);
