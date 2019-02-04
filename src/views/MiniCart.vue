@@ -30,7 +30,7 @@
             {{ props.item.name }}
           </td>
           <td>x{{ props.item.quantity }}</td>
-          <td>${{ props.item.price }}</td>
+          <td>${{ parseFloat(props.item.price).toFixed(2) }}</td>
           <td class="text-xs-right">
             <v-btn icon @click="removeProduct(props.item)">
               <v-icon small>close</v-icon>
@@ -38,6 +38,11 @@
           </td>
         </template>
       </v-data-table>
+      <template v-else>
+        <p class="pa-4 ma-0 subheading">
+          You haven't added any products to your cart!
+        </p>
+      </template>
     </v-card-text>
     <v-divider></v-divider>
     <v-card-actions>
@@ -49,7 +54,7 @@
         </v-btn>
       </template>
       <template v-else>
-        <v-btn :to="{ name: 'shop' }" block color="primary"></v-btn>
+        <v-btn :to="{ name: 'shop' }" block color="primary">Go shopping</v-btn>
       </template>
     </v-card-actions>
   </v-card>
