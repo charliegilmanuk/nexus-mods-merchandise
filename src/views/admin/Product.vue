@@ -33,9 +33,15 @@
                     <v-text-field
                       v-model="product.expiry"
                       label="Expiry date/time"
-                    >
-                    </v-text-field>
+                    ></v-text-field>
                   </v-flex>
+                  <v-flex xs12 md6>
+                    <v-text-field
+                      v-model="product.price"
+                      label="Price £(GBP)"
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md6></v-flex>
                   <v-flex xs12 md6>
                     <v-text-field
                       v-model="product.orders"
@@ -99,6 +105,7 @@ export default {
       description: '',
       image: 'https://placehold.it/500x500',
       expiry: moment().format('YYYY-MM-DD HH:mm:ss'),
+      price: 15,
       orders: 0,
       goal: 1000
     }

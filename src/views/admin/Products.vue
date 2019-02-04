@@ -70,6 +70,7 @@
                 {{ props.item.timeLeft }}
               </span>
             </td>
+            <td>£{{ props.item.price }}</td>
             <td>{{ props.item.orders }} / {{ props.item.goal }}</td>
             <td>
               <v-chip label :color="props.item.status.color">{{
@@ -166,6 +167,7 @@ export default {
       { text: 'Name', value: 'name', sortable: true },
       { text: 'Description', value: 'id', sortable: false },
       { text: 'Expiry', value: 'expiry', sortable: true },
+      { text: 'Price', value: 'price', sortable: true },
       { text: 'Backers', value: 'orders', sortable: false },
       { text: 'Status', value: 'status.text', sortable: true },
       { text: 'Actions', value: 'actions', sortable: false, align: 'right' }

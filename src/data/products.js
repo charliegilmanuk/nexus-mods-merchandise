@@ -15,6 +15,7 @@ Qui consectetur officia sunt excepteur. Officia occaecat ex duis elit duis venia
 Sint veniam excepteur minim ea ex do incididunt nisi ut ad Lorem fugiat. Amet ut in nisi fugiat voluptate excepteur est sint esse. Labore ex est labore cupidatat consequat et est nulla eu tempor cillum tempor aliquip aliquip. Aute aliquip dolore ut quis. Fugiat nostrud adipisicing irure qui laborum qui tempor ullamco adipisicing velit. Sunt dolore ex esse pariatur adipisicing in labore sunt aute do.`,
     require('~/assets/products/t-shirt-black-front.jpg'),
     '2019-02-27 17:00:00',
+    '20',
     375,
     2000
   ),
@@ -28,6 +29,7 @@ Adipisicing sunt qui nisi cupidatat duis dolore nostrud exercitation ea est occa
 Id dolore proident occaecat dolor incididunt dolor consectetur mollit fugiat Lorem Lorem. Lorem et nulla id nulla ut anim aute. Labore in sunt cupidatat nostrud duis aliqua voluptate reprehenderit incididunt dolor pariatur enim tempor adipisicing. Consequat cillum dolore esse minim labore veniam pariatur.`,
     require('~/assets/products/t-shirt-black-front.jpg'),
     '2019-01-14 17:00:00',
+    '20',
     4199,
     10000
   ),
@@ -45,6 +47,7 @@ Dolore et laboris nisi irure nisi irure in velit. Nisi occaecat esse aliquip eli
 Aliqua eu cillum elit incididunt nulla ut aliqua. Officia aliqua laborum tempor aute culpa aute ea excepteur. Sunt et ut veniam amet.`,
     require('~/assets/products/t-shirt-grey-front.jpg'),
     '2019-02-10 17:00:00',
+    '20',
     1750,
     1750
   ),
@@ -60,6 +63,7 @@ Eiusmod do dolore ad aliqua magna ad nulla id. Commodo mollit magna tempor et Lo
 Laborum aute culpa enim non. Ipsum do culpa dolore ex id laborum id. Ad do laborum et labore nulla aute ex est culpa ex velit. Pariatur non aliqua aliquip sit ea minim officia. Irure sint laboris consequat anim eiusmod sint cupidatat velit nulla enim dolor sint sint sint.`,
     require('~/assets/products/t-shirt-black-front.jpg'),
     '2019-02-27 17:00:00',
+    '20',
     288,
     500
   ),
@@ -75,6 +79,7 @@ Magna deserunt proident reprehenderit ipsum tempor tempor. Minim in velit est id
 Nisi ad adipisicing quis laborum qui irure do cupidatat non esse veniam voluptate aliquip elit. Enim aute aute proident aute mollit ea non amet ad. Do eu esse et tempor. Nostrud nisi nulla in nostrud excepteur anim. Commodo id non ipsum amet deserunt pariatur sit. Nisi enim voluptate magna quis velit esse irure eu aliqua culpa.`,
     require('~/assets/products/t-shirt-black-front.jpg'),
     '2019-02-18 17:00:00',
+    '20',
     1466,
     1500
   ),
@@ -94,6 +99,7 @@ Irure ex dolor non officia dolor occaecat. Aliqua enim consectetur eu commodo re
 Aliqua labore sint aliqua laborum Lorem ad et labore deserunt. Deserunt elit et sunt ea veniam adipisicing. Dolore quis proident ut ut qui nulla et aute mollit consequat culpa adipisicing ea. Ipsum ipsum enim mollit officia aliquip aliquip irure. Esse veniam qui mollit nostrud nisi cillum. Consectetur labore voluptate aute cillum minim et minim tempor qui ex ad sint proident. Enim ut cillum cupidatat magna in esse non.`,
     require('~/assets/products/t-shirt-black-front.jpg'),
     '2019-04-01 17:00:00',
+    '20',
     3780,
     15000
   )

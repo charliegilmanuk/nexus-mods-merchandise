@@ -8,16 +8,18 @@ export default class Product {
    * @param {text} description
    * @param {string} image
    * @param {datetime} expiry
+   * @param {string} price
    * @param {integer} orders
    * @param {integer} goal
    * @memberof Product
    */
-  constructor(id, name, description, image, expiry, orders, goal) {
+  constructor(id, name, description, image, expiry, price, orders, goal) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.image = image;
     this.expiry = moment(expiry).format('YYYY-MM-DD HH:mm:ss');
+    this.price = price;
     this.orders = orders;
     this.goal = goal;
   }

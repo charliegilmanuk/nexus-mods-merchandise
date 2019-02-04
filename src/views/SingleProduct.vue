@@ -46,6 +46,7 @@
           ></v-progress-linear>
 
           <v-toolbar flat color="transparent" class="mt-5">
+            <span class="title">£{{ product.price }}</span>
             <v-spacer></v-spacer>
             <v-text-field
               v-model.number="quantity"

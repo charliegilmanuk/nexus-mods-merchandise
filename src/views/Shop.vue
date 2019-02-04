@@ -104,6 +104,11 @@
             {{ product.description }}
           </v-card-text>
           <v-card-actions>
+            <div class="title">
+              <span class="mr-2 font-weight-light">£</span>
+              <span class="mr-2">{{ product.price }}</span>
+              <span class="subheading">inc. VAT</span>
+            </div>
             <v-spacer></v-spacer>
             <v-btn
               color="primary"

@@ -30,9 +30,7 @@
             {{ props.item.name }}
           </td>
           <td>x{{ props.item.quantity }}</td>
-          <td>
-            £10.95
-          </td>
+          <td>${{ props.item.price }}</td>
           <td class="text-xs-right">
             <v-btn icon>
               <v-icon small>close</v-icon>
