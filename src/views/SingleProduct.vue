@@ -133,7 +133,7 @@ export default {
     addToCart() {
       if (!this.product.expired) {
         this.$store.dispatch('addToCart', {
-          id: 1,
+          id: this.id,
           quantity: this.quantity
         });
       }
