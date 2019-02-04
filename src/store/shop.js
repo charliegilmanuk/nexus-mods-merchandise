@@ -8,7 +8,17 @@ const state = {
   cart: []
 };
 
-const getters = {};
+const getters = {
+  cartCount: state => {
+    let count = 0;
+
+    state.cart.forEach(obj => {
+      count += obj.quantity;
+    });
+
+    return count;
+  }
+};
 
 const actions = {
   // Gets all products from localforage

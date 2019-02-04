@@ -52,7 +52,10 @@
         <!-- Mini cart -->
         <v-menu offset-y>
           <v-btn slot="activator">
-            <v-icon>shopping_cart</v-icon>
+            <v-badge right color="red">
+              <span slot="badge" v-if="cartCount">{{ cartCount }}</span>
+              <v-icon>shopping_cart</v-icon>
+            </v-badge>
           </v-btn>
           <v-list>
             <v-list-tile>
@@ -118,6 +121,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data: () => ({
     userNav: [{ text: 'Settings' }, { text: 'Sign out' }],
@@ -185,6 +190,9 @@ export default {
       'Games'
     ],
     searchSelected: ['Mods']
-  })
+  }),
+  computed: {
+    ...mapGetters(['cartCount'])
+  }
 };
 </script>
