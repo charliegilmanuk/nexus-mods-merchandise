@@ -5,7 +5,8 @@ import Vue from 'vue';
 const state = {
   products: [],
   loading: true,
-  cart: []
+  cart: [],
+  cartLoading: true
 };
 
 const getters = {
@@ -173,6 +174,7 @@ const mutations = {
   // Set cart items
   setCart: (state, payload) => {
     state.cart = payload;
+    state.cartLoading = false;
   },
 
   // Add or update cart item in state
