@@ -95,7 +95,9 @@ const actions = {
   },
 
   // Delete selected product(s), expects array
-  deleteProducts: ({ state, commit }, products) => {
+  deleteProducts: ({ state, commit, dispatch }, products) => {
+    dispatch('removeFromCart', products);
+
     return new Promise(resolve => {
       products.forEach(obj => {
         let i = state.products.findIndex(product => product.id == obj.id);
