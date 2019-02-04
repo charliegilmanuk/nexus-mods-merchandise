@@ -10,6 +10,7 @@ const state = {
 };
 
 const getters = {
+  // Return count of products with their quantities
   cartCount: state => {
     let count = 0;
 
@@ -18,6 +19,20 @@ const getters = {
     });
 
     return count;
+  },
+
+  // Return cart items with the product model info
+  cartProducts: state => {
+    let items = [];
+
+    state.cart.forEach(item => {
+      let product = state.products.find(x => x.id === item.id);
+      product.quantity = item.quantity;
+
+      items.push(product);
+    });
+
+    return items;
   }
 };
 
