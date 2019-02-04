@@ -45,9 +45,29 @@
             :color="product.status.color"
           ></v-progress-linear>
 
-          <v-btn color="success" class="mt-5" :disabled="product.expired"
-            >Add to cart</v-btn
-          >
+          <v-toolbar flat color="transparent" class="mt-5">
+            <v-spacer></v-spacer>
+            <v-text-field
+              v-model.number="quantity"
+              solo
+              light
+              single-line
+              hide-details
+              hide-actions
+              flat
+              type="number"
+              min="1"
+              max="10"
+              class="shrink"
+            ></v-text-field>
+            <v-btn
+              color="success"
+              :disabled="product.expired"
+              @click="addToCart()"
+            >
+              Add to cart
+            </v-btn>
+          </v-toolbar>
         </v-flex>
       </v-layout>
     </v-container>
@@ -92,7 +112,8 @@ import nl2br from 'nl2br';
 export default {
   data: () => ({
     tabActive: null,
-    tabs: ['Description', 'Comments', 'FAQ']
+    tabs: ['Description', 'Comments', 'FAQ'],
+    quantity: 1
   }),
   computed: {
     ...mapState({
@@ -108,7 +129,16 @@ export default {
     }
   },
   methods: {
-    nl2br: nl2br
+    nl2br: nl2br,
+
+    addToCart() {
+      if (!this.product.expired) {
+        this.$store.dispatch('addToCart', {
+          id: this.id,
+          quantity: this.quantity
+        });
+      }
+    }
   }
 };
 </script>
