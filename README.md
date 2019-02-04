@@ -11,7 +11,7 @@ npm run serve
 
 | | |
 |----------|:-------------:|
-| ![Imgur](https://i.imgur.com/8f6rJXd.jpg) | ![Imgur](https://i.imgur.com/nFRUB1D.png) |
+| ![Imgur](https://i.imgur.com/g34PgfG.jpg?1) | ![Imgur](https://i.imgur.com/ebS1oxg.png) |
 
 #
 ---
