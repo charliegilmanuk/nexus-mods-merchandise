@@ -67,7 +67,7 @@ Unfortunately due to tight time constraints I didn't quite do everything I would
 * Allow quantity editing in cart
 
 ### Known problems
-* Hard refreshing a single product page returns blank, this is because the component is mounted before the product exists in the state for some reason (will debug)
+* N/A
 
 ---
 

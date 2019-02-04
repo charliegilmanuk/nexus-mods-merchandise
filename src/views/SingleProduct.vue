@@ -1,15 +1,12 @@
 <template>
-  <div>
+  <div v-if="product">
     <v-toolbar flat color="transparent">
       <v-btn flat :to="{ name: 'shop' }">
         <v-icon class="mr-2">chevron_left</v-icon>
         Return to shop
       </v-btn>
       <v-spacer></v-spacer>
-      <v-btn
-        :to="{ name: 'admin.products.edit', params: { id: product.id } }"
-        flat
-      >
+      <v-btn :to="{ name: 'admin.products.edit', params: { id } }" flat>
         Edit as Admin
       </v-btn>
     </v-toolbar>
@@ -127,7 +124,7 @@ export default {
     },
 
     product() {
-      return this.products.find(x => x.id === this.id);
+      return this.products.find(x => x.id == this.id);
     }
   },
   methods: {
@@ -136,7 +133,7 @@ export default {
     addToCart() {
       if (!this.product.expired) {
         this.$store.dispatch('addToCart', {
-          id: this.id,
+          id: 1,
           quantity: this.quantity
         });
       }
