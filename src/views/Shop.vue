@@ -9,7 +9,14 @@
         hide-details
         placeholder="Search product..."
         append-icon="search"
+        clearable
       ></v-text-field>
+      <span class="ml-3">
+        {{ filteredProducts.length }}
+        {{ pluralize('products', filteredProducts.length) }}
+        <span v-if="search"> found for '{{ search }}'</span>
+        <span v-else>found</span>
+      </span>
       <v-spacer></v-spacer>
       <v-combobox
         v-model="pageSize"
@@ -45,7 +52,7 @@
         xs6
         md4
         lg3
-        v-for="product in products"
+        v-for="product in filteredProducts"
         :key="product.id"
         class="mx-0"
         transition="slide-y-transition"
@@ -124,10 +131,13 @@
 
 <script>
 import { mapState } from 'vuex';
+import pluralize from 'pluralize';
 
 export default {
+  name: 'Shop',
   data: () => ({
     search: '',
+    searchables: ['name', 'description'],
     pageSize: 10,
     sortables: [
       'Expiry date',
@@ -137,13 +147,39 @@ export default {
     ],
     sortingOn: null
   }),
+
   computed: {
     ...mapState({
       products: state => state.shop.products,
       loading: state => state.shop.loading
-    })
+    }),
+
+    filteredProducts() {
+      let results = [];
+
+      if (this.search) {
+        this.products.forEach(product => {
+          let matched = false;
+
+          this.searchables.forEach(key => {
+            if (product[key].match(new RegExp(this.search, 'i'))) {
+              matched = true;
+            }
+          });
+
+          if (matched) {
+            results.push(product);
+          }
+        });
+      } else {
+        results = this.products;
+      }
+
+      return results;
+    }
+  },
+  methods: {
+    pluralize: pluralize
   }
 };
 </script>
-
-<style></style>
