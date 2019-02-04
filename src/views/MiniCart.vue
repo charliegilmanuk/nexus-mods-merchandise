@@ -32,7 +32,7 @@
           <td>x{{ props.item.quantity }}</td>
           <td>${{ props.item.price }}</td>
           <td class="text-xs-right">
-            <v-btn icon>
+            <v-btn icon @click="removeProduct(props.item)">
               <v-icon small>close</v-icon>
             </v-btn>
           </td>
@@ -74,6 +74,11 @@ export default {
     }),
 
     ...mapGetters(['cartCount', 'cartProducts'])
+  },
+  methods: {
+    removeProduct(product) {
+      this.$store.dispatch('removeFromCart', [product]);
+    }
   }
 };
 </script>
