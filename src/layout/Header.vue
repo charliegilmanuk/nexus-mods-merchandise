@@ -50,18 +50,14 @@
         </v-menu>
         <v-divider vertical></v-divider>
         <!-- Mini cart -->
-        <v-menu offset-y>
+        <v-menu offset-y left>
           <v-btn slot="activator">
             <v-badge right color="red">
               <span slot="badge" v-if="cartCount">{{ cartCount }}</span>
               <v-icon>shopping_cart</v-icon>
             </v-badge>
           </v-btn>
-          <v-list>
-            <v-list-tile>
-              v-list
-            </v-list-tile>
-          </v-list>
+          <mini-cart></mini-cart>
         </v-menu>
         <v-divider vertical></v-divider>
       </v-toolbar-items>
@@ -122,8 +118,12 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import MiniCart from '~/views/MiniCart';
 
 export default {
+  components: {
+    'mini-cart': MiniCart
+  },
   data: () => ({
     userNav: [{ text: 'Settings' }, { text: 'Sign out' }],
     mainNav: [
