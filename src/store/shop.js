@@ -169,7 +169,7 @@ const mutations = {
   setCartProduct: (state, payload) => {
     const i = state.cart.findIndex(product => product.id === payload.id);
 
-    if (i) {
+    if (i >= 0) {
       state.cart[i].quantity += payload.quantity;
     } else {
       state.cart.push(payload);
