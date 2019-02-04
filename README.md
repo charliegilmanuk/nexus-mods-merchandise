@@ -4,7 +4,7 @@ A concept for a Kickstarter-like shop for Nexus Mods and Black Tree Gaming.
 ## Project setup
 This will open the app on port *8080* by default, complete with *browserSync* and hot reloading.
 ```
-git clone [github url]
+git clone https://github.com/charliegilmanuk/nexus-mods-merchandise.git
 npm install
 npm run serve
 ```
@@ -63,7 +63,6 @@ Unfortunately due to tight time constraints I didn't quite do everything I would
 * Allow quantity editing in cart
 
 ### Known problems
-* If an item is added to the cart and then removed from the products database there will be errors.
 * Hard refreshing a single product page returns blank, this is because the component is mounted before the product exists in the state for some reason (will debug)
 
 ---
