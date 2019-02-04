@@ -3,8 +3,9 @@ import Product from '../models/Product';
 import Vue from 'vue';
 
 const state = {
-  all: [],
-  loading: true
+  products: [],
+  loading: true,
+  cart: []
 };
 
 const getters = {};
@@ -42,12 +43,12 @@ const actions = {
   // Create new Product instance from args, commit to state and forage
   addProduct: ({ state, commit }, product) => {
     return new Promise(resolve => {
-      product.id = state.all[state.all.length - 1].id + 1;
+      product.id = state.products[state.products.length - 1].id + 1;
       product = new Product(...Object.values(product));
 
       commit('setProduct', product);
 
-      nmstore.setItem('products', state.all).then(() => {
+      nmstore.setItem('products', state.products).then(() => {
         resolve(product);
       });
     });
@@ -61,7 +62,7 @@ const actions = {
 
       commit('setProduct', product);
 
-      nmstore.setItem('products', state.all).then(() => {
+      nmstore.setItem('products', state.products).then(() => {
         resolve(product);
       });
     });
@@ -71,15 +72,15 @@ const actions = {
   deleteProducts: ({ state, commit }, products) => {
     return new Promise(resolve => {
       products.forEach(obj => {
-        let i = state.all.findIndex(product => product.id == obj.id);
+        let i = state.products.findIndex(product => product.id == obj.id);
         commit('removeProductByIndex', i);
       });
 
-      nmstore.setItem('products', state.all).then(() => {
-        commit('setProducts', state.all);
+      nmstore.setItem('products', state.products).then(() => {
+        commit('setProducts', state.products);
       });
 
-      resolve(state.all);
+      resolve(state.products);
     });
   }
 };
@@ -88,23 +89,23 @@ const mutations = {
   // Set products.all state
   setProducts: (state, payload) => {
     state.loading = false;
-    state.all = payload;
+    state.products = payload;
   },
 
   // Set an individual product, either new or updated
   setProduct: (state, payload) => {
-    let i = state.all.findIndex(product => product.id === payload.id);
+    let i = state.products.findIndex(product => product.id === payload.id);
 
     if (i >= 0) {
-      Vue.set(state.all, i, payload);
+      Vue.set(state.products, i, payload);
     } else {
-      state.all.push(payload);
+      state.products.push(payload);
     }
   },
 
   // Remove product from state by index
   removeProductByIndex: (state, index) => {
-    state.all.splice(index, 1);
+    state.products.splice(index, 1);
   }
 };
 

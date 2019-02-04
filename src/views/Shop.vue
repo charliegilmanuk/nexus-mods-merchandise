@@ -134,8 +134,8 @@ export default {
   }),
   computed: {
     ...mapState({
-      products: state => state.products.all,
-      loading: state => state.products.loading
+      products: state => state.shop.products,
+      loading: state => state.shop.loading
     })
   }
 };

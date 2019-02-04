@@ -96,7 +96,7 @@ export default {
   }),
   computed: {
     ...mapState({
-      products: state => state.products.all
+      products: state => state.shop.products
     }),
 
     id() {
