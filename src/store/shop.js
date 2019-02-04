@@ -26,7 +26,7 @@ const getters = {
     let items = [];
 
     state.cart.forEach(item => {
-      let product = state.products.find(x => x.id === item.id);
+      let product = state.products.find(x => x.id == item.id);
       product.quantity = item.quantity;
 
       items.push(product);
@@ -40,7 +40,6 @@ const getters = {
     let total = 0;
 
     getters.cartProducts.forEach(item => {
-      console.log('multiplying ' + item.price + ' with ' + item.quantity);
       total += parseFloat(parseFloat(item.price) * parseInt(item.quantity));
     });
 
@@ -144,12 +143,16 @@ const actions = {
   },
 
   // Add item object containing id and quantity to cart
-  addToCart: ({ state, commit }, item) => {
+  addToCart: ({ state, commit, dispatch }, item) => {
     return new Promise((resolve, reject) => {
       if (item.id) {
         if (!item.quantity) item.quantity = 1;
 
         commit('setCartProduct', item);
+        dispatch('changeProductOrders', {
+          id: item.id,
+          quantity: item.quantity
+        });
 
         nmstore.setItem('cart', state.cart).then(cart => {
           resolve(cart);
@@ -161,11 +164,15 @@ const actions = {
   },
 
   // Accepts array of items
-  removeFromCart: ({ state, commit }, item) => {
+  removeFromCart: ({ state, commit, dispatch }, item) => {
     return new Promise(resolve => {
       item.forEach(obj => {
         let i = state.cart.findIndex(product => product.id == obj.id);
         commit('removeFromCartByIndex', i);
+        dispatch('changeProductOrders', {
+          id: obj.id,
+          quantity: obj.quantity * -1
+        });
       });
 
       nmstore.setItem('cart', state.cart).then(() => {
@@ -173,6 +180,17 @@ const actions = {
       });
 
       resolve(state.cart);
+    });
+  },
+
+  // Called from cart change methods
+  changeProductOrders: ({ state, commit }, item) => {
+    return new Promise(resolve => {
+      commit('setProductOrders', item);
+
+      nmstore.setItem('products', state.products).then(() => {
+        resolve(state.products);
+      });
     });
   }
 };
@@ -220,6 +238,17 @@ const mutations = {
   // Remove product from cart by index
   removeFromCartByIndex: (state, index) => {
     state.cart.splice(index, 1);
+  },
+
+  // Adds or removes product orders value
+  setProductOrders: (state, payload) => {
+    let i = state.products.findIndex(product => product.id == payload.id);
+
+    if (i >= 0) {
+      let orders = state.products[i].orders;
+
+      state.products[i].orders = orders + +payload.quantity;
+    }
   }
 };
 
