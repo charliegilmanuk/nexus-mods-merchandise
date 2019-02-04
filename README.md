@@ -60,6 +60,7 @@ Unfortunately due to tight time constraints I didn't quite do everything I would
 * Nuxt.js for SEO purposes.  The shop is very fluid and great to use (in my opinion!) but unfortunately JavaScript doesn't rank very well in search engines.  Rendering it server side using something like Nuxt.js would improve on this.
 * Naming started to become an issue in the vuex store, would likely have to either use vuex-orm as above, or have a constants file with names of actions and mutations.
 * Further refactoring into separate components, i.e. product cards.
+* Allow quantity editing in cart
 
 ### Known problems
 * If an item is added to the cart and then removed from the products database there will be errors.
