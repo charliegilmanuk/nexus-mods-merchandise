@@ -24,9 +24,10 @@ export default {
   },
   created() {
     this.getProducts();
+    this.getCart();
   },
   methods: {
-    ...mapActions(['getProducts'])
+    ...mapActions(['getProducts', 'getCart'])
   }
 };
 </script>
