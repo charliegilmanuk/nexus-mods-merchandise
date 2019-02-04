@@ -12,15 +12,16 @@
         clearable
       ></v-text-field>
       <span class="ml-3">
+        {{ pageStart + 1 }} – {{ pageFinish }} of
         {{ filteredProducts.length }}
-        {{ pluralize('products', filteredProducts.length) }}
+        {{ pluralize('result', filteredProducts.length) }}
         <span v-if="search"> found for '{{ search }}'</span>
         <span v-else>found</span>
       </span>
       <v-spacer></v-spacer>
       <v-combobox
         v-model="pageSize"
-        :items="[5, 10, 25, 100]"
+        :items="pageSizes"
         solo
         single-line
         hide-actions
@@ -52,12 +53,12 @@
         xs6
         md4
         lg3
-        v-for="product in filteredProducts"
+        v-for="product in pagedProducts"
         :key="product.id"
         class="mx-0"
         transition="slide-y-transition"
       >
-        <v-card flat>
+        <v-card flat v-if="product.id">
           <router-link
             :to="{ name: 'product', params: { id: product.id } }"
             style="text-decoration: none;"
@@ -91,9 +92,9 @@
                     'subtitle'
                   ]"
                 >
-                  <v-icon small style="color: inherit;" class="mr-2"
-                    >timer</v-icon
-                  >
+                  <v-icon small style="color: inherit;" class="mr-2">
+                    timer
+                  </v-icon>
                   <span>{{ product.formattedExpiry }}</span>
                 </v-flex>
                 <v-flex>
@@ -120,10 +121,18 @@
             <v-btn
               color="primary"
               :to="{ name: 'product', params: { id: product.id } }"
-              >View</v-btn
             >
+              View
+            </v-btn>
           </v-card-actions>
         </v-card>
+      </v-flex>
+      <v-flex xs12 class="text-xs-center py-5">
+        <v-pagination
+          v-model="page"
+          :length="pagesTotal"
+          v-if="pagesTotal > 1"
+        ></v-pagination>
       </v-flex>
     </v-layout>
   </v-container>
@@ -138,7 +147,9 @@ export default {
   data: () => ({
     search: '',
     searchables: ['name', 'description'],
-    pageSize: 10,
+    page: 1,
+    pageSize: 6,
+    pageSizes: [6, 12, 25, 50],
     sortables: [
       'Expiry date',
       'Date added',
@@ -153,6 +164,38 @@ export default {
       products: state => state.shop.products,
       loading: state => state.shop.loading
     }),
+
+    pageStart() {
+      return this.page * this.pageSize - this.pageSize;
+    },
+
+    pageFinish() {
+      let finish = this.pageStart + this.pageSize;
+
+      if (finish > this.filteredProducts.length) {
+        return this.filteredProducts.length;
+      }
+
+      return finish;
+    },
+
+    pagesTotal() {
+      return Math.ceil(this.filteredProducts.length / this.pageSize);
+    },
+
+    pagedProducts() {
+      let results = [];
+
+      if (this.filteredProducts.length) {
+        for (let i = this.pageStart; i < this.pageFinish; i++) {
+          if (this.filteredProducts[i]) {
+            results.push(this.filteredProducts[i]);
+          }
+        }
+      }
+
+      return results;
+    },
 
     filteredProducts() {
       let results = [];
