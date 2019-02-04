@@ -44,6 +44,10 @@
             :value="product.progress"
             :color="product.status.color"
           ></v-progress-linear>
+
+          <v-btn color="success" class="mt-5" :disabled="product.expired"
+            >Add to cart</v-btn
+          >
         </v-flex>
       </v-layout>
     </v-container>
