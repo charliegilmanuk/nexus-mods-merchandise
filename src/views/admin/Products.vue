@@ -32,6 +32,7 @@
           :headers="headers"
           :items="products"
           :loading="loading"
+          :search="search"
           item-key="id"
           select-all
           class="elevation-1"
@@ -46,7 +47,7 @@
               ></v-checkbox>
             </td>
             <td class="text-xs-center shrink">
-              <v-avatar size="64">
+              <v-avatar size="64" v-if="props.item.image">
                 <img :src="props.item.image" :alt="props.item.name" />
               </v-avatar>
             </td>
