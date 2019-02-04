@@ -21,7 +21,7 @@
         label="Per page"
         class="shrink mr-2"
       ></v-combobox>
-      <v-combobox
+      <!-- <v-combobox
         v-model="sortingOn"
         :items="sortables"
         solo
@@ -31,7 +31,7 @@
         label="Sort by"
         class="shrink"
       >
-      </v-combobox>
+      </v-combobox> -->
     </v-toolbar>
     <v-layout wrap class="py-5">
       <v-flex xs12 class="py-5 text-xs-center" v-if="loading">
