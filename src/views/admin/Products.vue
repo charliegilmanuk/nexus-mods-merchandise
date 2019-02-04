@@ -53,12 +53,12 @@
             </td>
             <td class="text-xs-center">{{ props.item.id }}</td>
             <td>{{ props.item.name }}</td>
-            <td
+            <!-- <td
               style="max-width: 200px; white-space: wrap; height: 100px;"
               class="text-truncate wrap"
             >
               {{ props.item.description }}
-            </td>
+            </td> -->
             <td>
               <span class="d-block">{{ props.item.formattedExpiry }}</span>
               <span
@@ -165,7 +165,7 @@ export default {
       { text: 'Image', value: 'image', sortable: false, align: 'center' },
       { text: 'ID', value: 'id', sortable: true, align: 'center' },
       { text: 'Name', value: 'name', sortable: true },
-      { text: 'Description', value: 'id', sortable: false },
+      // { text: 'Description', value: 'id', sortable: false },
       { text: 'Expiry', value: 'expiry', sortable: true },
       { text: 'Price', value: 'price', sortable: true },
       { text: 'Backers', value: 'orders', sortable: false },
