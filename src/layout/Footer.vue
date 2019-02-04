@@ -14,7 +14,7 @@
       Nexus Mods shop concept by Charlie Gilman
     </p>
     <v-spacer></v-spacer>
-    <v-btn color="primary">Back to top</v-btn>
+    <v-btn color="primary" @click="$vuetify.goTo('body')">Back to top</v-btn>
   </v-toolbar>
 </template>
 
