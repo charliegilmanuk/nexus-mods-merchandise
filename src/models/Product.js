@@ -4,7 +4,6 @@ import ProductStatus from '~/models/ProductStatus';
 export default class Product {
   /**
    * Creates an instance of Product.
-   * @param {integer} id
    * @param {string} name
    * @param {text} description
    * @param {string} image
@@ -18,7 +17,7 @@ export default class Product {
     this.name = name;
     this.description = description;
     this.image = image;
-    this.expiry = expiry;
+    this.expiry = moment(expiry).format('YYYY-MM-DD HH:mm:ss');
     this.orders = orders;
     this.goal = goal;
   }
