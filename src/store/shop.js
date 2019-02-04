@@ -33,6 +33,18 @@ const getters = {
     });
 
     return items;
+  },
+
+  // Return total cost of cart
+  cartTotal: (state, getters) => {
+    let total = 0;
+
+    getters.cartProducts.forEach(item => {
+      console.log('multiplying ' + item.price + ' with ' + item.quantity);
+      total += parseFloat(parseFloat(item.price) * parseInt(item.quantity));
+    });
+
+    return total.toFixed(2);
   }
 };
 

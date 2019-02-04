@@ -7,7 +7,7 @@
       <v-spacer></v-spacer>
       <div>
         <span class="font-weight-light caption grey--text">Total: </span>
-        <span class="subheading">£19.65</span>
+        <span class="subheading">£{{ cartTotal }}</span>
       </div>
     </v-toolbar>
     <v-divider></v-divider>
@@ -73,7 +73,7 @@ export default {
       loading: state => state.shop.cartLoading
     }),
 
-    ...mapGetters(['cartCount', 'cartProducts'])
+    ...mapGetters(['cartCount', 'cartProducts', 'cartTotal'])
   },
   methods: {
     removeProduct(product) {
