@@ -56,9 +56,9 @@ None required, again, out of scope and would realistically require a server API.
 Unfortunately due to tight time constraints I didn't quite do everything I would've liked to do, but I may be maintaining this example as a learning process for myself in the future.  Here's what I've got in mind:
 
 * Better responsive design – Overall I just focused on the desktop site, however most of the columns should adjust, only limited mobile compatibility.
-* Different tiers and prices for the goals (an array of goal objects).
+* Multiple tiers and prices for the goals (an array of goal objects).
 * Front end ORM system like vuex-orm, this would've made the cart/products data sharing a bit easier and make calls to the data simpler and more structured.
-* More realistic (redesigned footer).
+* More realistic/redesigned footer.
 * Form validation and better elements like datetime pickers
 * Image upload for products
 * Nuxt.js for SEO purposes.  The shop is very fluid and great to use (in my opinion!) but unfortunately JavaScript doesn't rank very well in search engines.  Rendering it server side using something like Nuxt.js would improve on this.
