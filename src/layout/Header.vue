@@ -3,13 +3,13 @@
     <!-- Top bar, primary navigation -->
     <v-toolbar flat prominent>
       <v-toolbar-title>
-        <a to="/">
+        <router-link to="/">
           <img
             :src="require('~/assets/logo.png')"
             alt="Nexus Mods logo"
             style="width: 200px;"
           />
-        </a>
+        </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
@@ -27,6 +27,7 @@
       <v-btn class="primary light" light>Install Vortex</v-btn>
       <v-toolbar-items>
         <v-divider vertical></v-divider>
+        <!-- User dropdown -->
         <v-menu open-on-hover offset-y>
           <v-btn slot="activator">
             <v-avatar class="mr-3">
@@ -44,6 +45,18 @@
               :key="nav.text"
             >
               <v-list-tile-title>{{ nav.text }}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+        <v-divider vertical></v-divider>
+        <!-- Mini cart -->
+        <v-menu offset-y>
+          <v-btn slot="activator">
+            <v-icon>shopping_cart</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile>
+              v-list
             </v-list-tile>
           </v-list>
         </v-menu>
