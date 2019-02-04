@@ -82,6 +82,58 @@ const actions = {
 
       resolve(state.products);
     });
+  },
+
+  // Get items in cart from storage
+  getCart: ({ commit }) => {
+    return new Promise(resolve => {
+      return nmstore
+        .getItem('cart')
+        .then(response => {
+          if (response) {
+            return response;
+          } else {
+            return nmstore.setItem('cart', []).then(response => response);
+          }
+        })
+        .then(cart => {
+          commit('setCart', cart);
+          resolve(cart);
+        });
+    });
+  },
+
+  // Add item object containing id and quantity to cart
+  addToCart: ({ state, commit }, item) => {
+    return new Promise((resolve, reject) => {
+      if (item.id) {
+        if (!item.quantity) item.quantity = 1;
+
+        commit('setCartProduct', item);
+
+        nmstore.setItem('cart', state.cart).then(cart => {
+          resolve(cart);
+        });
+      } else {
+        reject('No product ID specified');
+      }
+    });
+  },
+
+  // Accepts array of items
+  removeFromCart: ({ state, commit }, item) => {
+    return new Promise(resolve => {
+      item.forEach(obj => {
+        let i = state.cart.findIndex(product => product.id == obj.id);
+        commit('removeFromCartByIndex', i);
+      });
+
+      nmstore.setItem('cart', state.cart).then(() => {
+        commit('setCart', state.cart);
+      });
+
+      resolve(state.cart);
+    });
   }
 };
 
@@ -106,6 +158,27 @@ const mutations = {
   // Remove product from state by index
   removeProductByIndex: (state, index) => {
     state.products.splice(index, 1);
+  },
+
+  // Set cart items
+  setCart: (state, payload) => {
+    state.cart = payload;
+  },
+
+  // Add or update cart item in state
+  setCartProduct: (state, payload) => {
+    const i = state.cart.findIndex(product => product.id === payload.id);
+
+    if (i) {
+      state.cart[i].quantity += payload.quantity;
+    } else {
+      state.cart.push(payload);
+    }
+  },
+
+  // Remove product from cart by index
+  removeFromCartByIndex: (state, index) => {
+    state.cart.splice(index, 1);
   }
 };
 
