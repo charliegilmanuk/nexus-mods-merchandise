@@ -31,6 +31,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "localforage": "^1.7.3",
     "moment": "^2.24.0",
+    "nl2br": "0.0.3",
     "node-sass": "^4.9.0",
     "pluralize": "^7.0.0",
     "sass-loader": "^7.0.1",
