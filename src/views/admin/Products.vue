@@ -77,19 +77,47 @@
               }}</v-chip>
             </td>
             <td class="text-xs-right">
-              <v-btn
-                icon
-                small
-                :to="{
-                  name: 'admin.products.edit',
-                  params: { id: props.item.id }
-                }"
-              >
-                <v-icon small>edit</v-icon>
-              </v-btn>
-              <v-btn icon small @click="confirmDeleteSingle(props.item)">
-                <v-icon small>delete</v-icon>
-              </v-btn>
+              <!-- View button -->
+              <v-tooltip top lazy color="black">
+                <v-btn
+                  slot="activator"
+                  icon
+                  small
+                  :to="{ name: 'product', params: { id: props.item.id } }"
+                >
+                  <v-icon>search</v-icon>
+                </v-btn>
+                <span>View in shop</span>
+              </v-tooltip>
+
+              <!-- Edit button -->
+              <v-tooltip top lazy color="black">
+                <v-btn
+                  slot="activator"
+                  icon
+                  small
+                  :to="{
+                    name: 'admin.products.edit',
+                    params: { id: props.item.id }
+                  }"
+                >
+                  <v-icon small>edit</v-icon>
+                </v-btn>
+                <span>Edit product</span>
+              </v-tooltip>
+
+              <!-- Delete button -->
+              <v-tooltip top lazy color="black">
+                <v-btn
+                  icon
+                  small
+                  slot="activator"
+                  @click="confirmDeleteSingle(props.item)"
+                >
+                  <v-icon small>delete</v-icon>
+                </v-btn>
+                <span>Remove selected</span>
+              </v-tooltip>
             </td>
           </template>
         </v-data-table>
