@@ -68,6 +68,7 @@ Unfortunately due to tight time constraints I didn't quite do everything I would
 
 ### Known problems
 * Nice to have:  paging preference persistence
+* Page titles have not been implemented
 
 ---
 
