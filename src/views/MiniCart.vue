@@ -64,6 +64,7 @@
 import { mapGetters, mapState } from 'vuex';
 
 export default {
+  name: 'MiniCart',
   data: () => ({
     headers: [
       { text: 'Image', value: 'image', sortable: false },

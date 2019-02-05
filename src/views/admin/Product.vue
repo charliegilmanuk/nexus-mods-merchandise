@@ -96,6 +96,7 @@ import { mapState, mapActions } from 'vuex';
 import moment from 'moment';
 
 export default {
+  name: 'EditProduct',
   data: () => ({
     show: true,
     tab: null,

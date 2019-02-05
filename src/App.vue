@@ -18,6 +18,7 @@ import Footer from '~/layout/Footer';
 import { mapActions } from 'vuex';
 
 export default {
+  name: 'NexusMods',
   components: {
     'header-component': Header,
     'footer-component': Footer

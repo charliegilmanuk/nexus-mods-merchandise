@@ -157,6 +157,7 @@ import { mapState, mapActions } from 'vuex';
 import pluralize from 'pluralize';
 
 export default {
+  name: 'AdminProducts',
   data: () => ({
     search: '',
     selectedRows: [],
