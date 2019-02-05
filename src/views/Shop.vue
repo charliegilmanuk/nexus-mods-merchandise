@@ -55,7 +55,7 @@
         lg3
         v-for="product in pagedProducts"
         :key="product.id"
-        class="mx-0"
+        class="pa-3"
         transition="slide-y-transition"
       >
         <product-card :product="product"></product-card>
