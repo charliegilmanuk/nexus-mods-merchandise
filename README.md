@@ -9,10 +9,10 @@ npm install
 npm run serve
 ```
 
-|   |   |
-|---|---|
 | ![Imgur](https://i.imgur.com/oKhL77I.jpg) | ![Imgur](https://i.imgur.com/ebS1oxg.png) |
+|---|---|
 | ![Imgur](https://i.imgur.com/mOmT9FC.png) | ![Imgur](https://i.imgur.com/L7Acncx.png) |
+
 
 #
 ---
