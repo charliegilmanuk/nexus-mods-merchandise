@@ -13,12 +13,25 @@
         <v-container fill-height fluid>
           <v-layout fill-height align-end>
             <v-flex xs12 class="py-0">
-              <span class="headline">{{ product.name }}</span>
+              <span class="title font-weight-light">{{ product.name }}</span
+              ><br />
+
+              <span
+                :class="
+                  product.expired ? 'red--text' : 'grey--text text--lighten-2'
+                "
+              >
+                {{ product.expired ? 'Expired ' : '' }}
+                {{ product.timeLeft }}
+              </span>
             </v-flex>
           </v-layout>
         </v-container>
       </v-img>
     </router-link>
+    <v-card-text class="text-truncate font-weight-light">
+      {{ product.description }}
+    </v-card-text>
     <v-card-title>
       <v-container class="pa-0">
         <v-layout column>
@@ -47,23 +60,6 @@
         </v-layout>
       </v-container>
     </v-card-title>
-    <v-card-text class="text-truncate">
-      {{ product.description }}
-    </v-card-text>
-    <v-card-actions>
-      <div class="title">
-        <span class="mr-2 font-weight-light">£</span>
-        <span class="mr-2">{{ product.price }}</span>
-        <span class="subheading">inc. VAT</span>
-      </div>
-      <v-spacer></v-spacer>
-      <v-btn
-        color="primary"
-        :to="{ name: 'product', params: { id: product.id } }"
-      >
-        View
-      </v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
