@@ -118,7 +118,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import MiniCart from '~/views/MiniCart';
+import MiniCart from '~/components/MiniCart';
 
 export default {
   components: {

@@ -117,7 +117,7 @@
 <script>
 import { mapState } from 'vuex';
 import nl2br from 'nl2br';
-import MiniCart from '~/views/MiniCart';
+import MiniCart from '~/components/MiniCart';
 
 export default {
   name: 'SingleProduct',
