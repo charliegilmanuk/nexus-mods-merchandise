@@ -101,18 +101,35 @@
         </v-flex>
       </v-layout>
     </v-container>
+
+    <v-dialog v-model="confirmation" width="600">
+      <v-toolbar class="grey darken-4" flat>
+        <v-spacer></v-spacer>
+        <v-btn icon @click="confirmation = false">
+          <v-icon>close</v-icon>
+        </v-btn>
+      </v-toolbar>
+      <mini-cart :added="added" @close="confirmation = false"></mini-cart>
+    </v-dialog>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import nl2br from 'nl2br';
+import MiniCart from '~/views/MiniCart';
 
 export default {
+  name: 'SingleProduct',
+  components: {
+    'mini-cart': MiniCart
+  },
   data: () => ({
     tabActive: null,
     tabs: ['Description', 'Comments', 'FAQ'],
-    quantity: 1
+    quantity: 1,
+    confirmation: false,
+    added: {}
   }),
   computed: {
     ...mapState({
@@ -132,9 +149,10 @@ export default {
 
     addToCart() {
       if (!this.product.expired) {
-        this.$store.dispatch('addToCart', {
-          id: this.id,
-          quantity: this.quantity
+        this.added = { id: this.id, quantity: this.quantity };
+
+        this.$store.dispatch('addToCart', this.added).then(() => {
+          this.confirmation = true;
         });
       }
     }

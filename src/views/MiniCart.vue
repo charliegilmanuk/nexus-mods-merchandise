@@ -1,5 +1,28 @@
 <template>
   <v-card>
+    <template v-if="added.id">
+      <v-card-title class="grey darken-4 pt-0">
+        <v-alert
+          type="success"
+          outline
+          :value="added.id"
+          transition="scale-transition"
+          style="width: 100%;"
+        >
+          {{ pluralize('item', added.quantity) }}
+          {{ pluralize('was', added.quantity) }} added to the cart successfully!
+        </v-alert>
+      </v-card-title>
+      <v-card-actions class="grey darken-4 pa-3">
+        <v-spacer></v-spacer>
+        <v-btn outline :to="{ name: 'shop' }">
+          Shop all products
+        </v-btn>
+        <v-btn color="success" @click="$emit('close')">
+          Continue Shopping
+        </v-btn>
+      </v-card-actions>
+    </template>
     <v-toolbar card v-if="cartCount" color="transparent" dense>
       <v-toolbar-title class="subheading">
         Shopping Cart
@@ -62,6 +85,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex';
+import pluralize from 'pluralize';
 
 export default {
   name: 'MiniCart',
@@ -74,6 +98,14 @@ export default {
       { text: 'Actions', value: 'actions', sortable: false }
     ]
   }),
+  props: {
+    added: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    }
+  },
   computed: {
     ...mapState({
       loading: state => state.shop.cartLoading
@@ -82,6 +114,8 @@ export default {
     ...mapGetters(['cartCount', 'cartProducts', 'cartTotal'])
   },
   methods: {
+    pluralize: pluralize,
+
     removeProduct(product) {
       this.$store.dispatch('removeFromCart', [product]);
     }
