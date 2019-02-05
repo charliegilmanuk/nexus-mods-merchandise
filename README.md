@@ -9,9 +9,10 @@ npm install
 npm run serve
 ```
 
-| | |
-|----------|:-------------:|
-| ![Imgur](https://i.imgur.com/g34PgfG.jpg?1) | ![Imgur](https://i.imgur.com/ebS1oxg.png) |
+|   |   |
+|---|---|
+| ![Imgur](https://i.imgur.com/oKhL77I.jpg) | ![Imgur](https://i.imgur.com/ebS1oxg.png) |
+| ![Imgur](https://i.imgur.com/mOmT9FC.png) | ![Imgur](https://i.imgur.com/L7Acncx.png) |
 
 #
 ---
@@ -65,6 +66,8 @@ Unfortunately due to tight time constraints I didn't quite do everything I would
 * Naming started to become an issue in the vuex store, would likely have to either use vuex-orm as above, or have a constants file with names of actions and mutations.
 * Further refactoring into separate components, i.e. product cards.
 * Allow quantity editing in cart
+* JSDoc documentation
+* Unit testing
 
 ### Known problems
 * Nice to have:  paging preference persistence
