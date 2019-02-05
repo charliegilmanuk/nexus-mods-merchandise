@@ -226,7 +226,7 @@ const mutations = {
 
   // Add or update cart item in state
   setCartProduct: (state, payload) => {
-    const i = state.cart.findIndex(product => product.id === payload.id);
+    const i = state.cart.findIndex(product => product.id == payload.id);
 
     if (i >= 0) {
       state.cart[i].quantity += payload.quantity;
