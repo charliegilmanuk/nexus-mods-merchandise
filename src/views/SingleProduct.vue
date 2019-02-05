@@ -27,7 +27,7 @@
               'mb-5'
             ]"
           >
-            <span>{{ product.expired ? 'Expired ' : 'Expiring ' }}</span>
+            <span>{{ product.expired ? 'Expired ' : '' }}</span>
             {{ product.timeLeft }} – {{ product.formattedExpiry }}
           </h2>
           <p

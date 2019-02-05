@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from '~/util/moment';
 import ProductStatus from '~/models/ProductStatus';
 
 export default class Product {

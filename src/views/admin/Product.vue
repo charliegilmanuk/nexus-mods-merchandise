@@ -93,7 +93,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import moment from 'moment';
+import moment from '~/util/moment';
 
 export default {
   name: 'EditProduct',
