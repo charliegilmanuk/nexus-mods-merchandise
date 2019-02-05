@@ -67,7 +67,7 @@ Unfortunately due to tight time constraints I didn't quite do everything I would
 * Allow quantity editing in cart
 
 ### Known problems
-* N/A
+* Nice to have:  paging preference persistence
 
 ---
 
