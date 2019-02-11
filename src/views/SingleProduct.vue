@@ -102,6 +102,28 @@
       </v-layout>
     </v-container>
 
+    <v-container>
+      <v-layout wrap justify-center class="py-5">
+        <v-flex xs12>
+          <span class="headline px-3 py-4 d-block">Related Products</span>
+        </v-flex>
+        <v-flex
+          xs6
+          md4
+          lg3
+          v-for="relatedProduct in relatedProducts"
+          :key="relatedProduct.id"
+          class="py-4 px-3"
+          transition="slide-y-transition"
+        >
+          <product-card
+            :product="relatedProduct"
+            @click="$vuetify.goTo('#app')"
+          ></product-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+
     <v-dialog v-model="confirmation" width="600">
       <v-toolbar class="grey darken-4" flat>
         <v-spacer></v-spacer>
@@ -118,11 +140,13 @@
 import { mapState } from 'vuex';
 import nl2br from 'nl2br';
 import MiniCart from '~/components/MiniCart';
+import ProductCard from '~/components/ProductCard';
 
 export default {
   name: 'SingleProduct',
   components: {
-    'mini-cart': MiniCart
+    'mini-cart': MiniCart,
+    'product-card': ProductCard
   },
   data: () => ({
     tabActive: null,
@@ -131,6 +155,11 @@ export default {
     confirmation: false,
     added: {}
   }),
+  watch: {
+    id() {
+      this.$vuetify.goTo('#app');
+    }
+  },
   computed: {
     ...mapState({
       products: state => state.shop.products
@@ -142,6 +171,23 @@ export default {
 
     product() {
       return this.products.find(x => x.id == this.id);
+    },
+
+    relatedProducts() {
+      let excluded = [this.id];
+      let count = this.products.length <= 5 ? this.products.length - 1 : 4;
+      let related = [];
+
+      while (related.length < count) {
+        let rand = Math.floor(Math.random() * this.products.length);
+
+        if (excluded.indexOf(rand) < 0) {
+          related.push(this.products[rand]);
+          excluded.push(rand);
+        }
+      }
+
+      return related;
     }
   },
   methods: {
