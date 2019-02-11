@@ -158,6 +158,10 @@ export default {
   watch: {
     id() {
       this.$vuetify.goTo('#app');
+    },
+
+    product() {
+      this.appTitle(this.product.name);
     }
   },
   computed: {
